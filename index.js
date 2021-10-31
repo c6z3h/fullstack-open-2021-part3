@@ -5,9 +5,9 @@ var morgan = require('morgan')
 // initialize middleware
 app.use(express.json())
 // app.use(morgan('tiny'))
-
 const cors = require('cors')
 app.use(cors())
+app.use(express.static('build'))
 
 // sort-of DATABASE
 let persons = [
