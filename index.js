@@ -1,9 +1,13 @@
+// https://evening-waters-50143.herokuapp.com/ | https://git.heroku.com/evening-waters-50143.git
 const express = require('express')
 const app = express()
 var morgan = require('morgan')
 // initialize middleware
 app.use(express.json())
 // app.use(morgan('tiny'))
+
+const cors = require('cors')
+app.use(cors())
 
 // sort-of DATABASE
 let persons = [
@@ -103,7 +107,7 @@ const unknownEndpoint = (request, response) => {
   
   app.use(unknownEndpoint)
 
-const PORT = 3001
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`)
+const PORT = process.env.PORT || 3001
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`)
 })
